@@ -26,7 +26,9 @@ app.get('*', (req, res) => {
     date = new Date(parseInt(time));
   }
   else {
+    
     time = decode(time);
+    if (isNaN(Date.parse(time)) === false) console.log(isNaN(Date.parse(time)));
     date = new Date(time);
   }
   
@@ -39,7 +41,7 @@ app.get('*', (req, res) => {
   }
   
   if (ans.unix === null) {
-    console.log(date.getTime());
+    console.log(date instanceof Date);
     ans.natural = null;
   }
   else ans.natural = months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
