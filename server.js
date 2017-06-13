@@ -18,7 +18,19 @@ app.get("/", function (request, response) {
 
 app.get('*', (req, res) => {
   var time = req.originalUrl.slice(1);
+  var date;
   
+  if (parseInt(time)) {
+    date = new Date(parseInt(time));
+  }
+  else {
+    date = new Date(time);
+  }
+  
+  var ans = {
+    'unix': date.now(),
+    'natural': 
+  }
   
   res.send(req.originalUrl);
 });
