@@ -5,7 +5,7 @@
 var express = require('express');
 var app = express();
 
-var bodyParse = require('body-parser');
+var decode = require('urldecode');
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -26,8 +26,9 @@ app.get('*', (req, res) => {
     date = new Date(parseInt(time));
   }
   else {
-    time = time.replace(/%/g, ' ');
-    date = new Date(time);
+    time = dec
+    console.log(time);
+    date = new Date('December 15, 2015');
   }
   
   console.log(date);
