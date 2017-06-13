@@ -17,6 +17,9 @@ app.get("/", function (request, response) {
 });
 
 app.get('*', (req, res) => {
+  var time = req.originalUrl.slice(1);
+  
+  
   res.send(req.originalUrl);
 });
 
