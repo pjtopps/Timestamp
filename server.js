@@ -26,9 +26,8 @@ app.get('*', (req, res) => {
     date = new Date(parseInt(time));
   }
   else {
-    time = dec
-    console.log(time);
-    date = new Date('December 15, 2015');
+    time = decode(time);
+    date = new Date(time);
   }
   
   console.log(date);
