@@ -17,7 +17,7 @@ app.get("/", function (request, response) {
 });
 
 app.get('*', (req, res) => {
-  res.send('well hello');
+  res.send(req.originalUrl);
 });
 
 
