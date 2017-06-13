@@ -5,6 +5,8 @@
 var express = require('express');
 var app = express();
 
+var bodyParse = require('body-parser');
+
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
 
@@ -19,13 +21,12 @@ app.get("/", function (request, response) {
 app.get('*', (req, res) => {
   var time = req.originalUrl.slice(1);
   var date;
-  console.log(time, parseInt(time));
   
   if (parseInt(time)) {
-    console.log('in here');
     date = new Date(parseInt(time));
   }
   else {
+    time = time.replace(/%/g, ' ');
     date = new Date(time);
   }
   
@@ -33,11 +34,11 @@ app.get('*', (req, res) => {
   var months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
   
   var ans = {
-    'unix': date.getTime(),
-    'natural': months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear()
+    unix: date.getTime(),
+    natural: months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear()
   }
   
-  res.send(JSON.stringify(ans));
+  res.send(ans);
 });
 
 
