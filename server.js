@@ -33,9 +33,14 @@ app.get('*', (req, res) => {
   console.log(date);
   var months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
   
-  var ans = {
-    unix: date.getTime(),
-    natural: months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear()
+  if (date) {
+    var ans = {
+      unix: date.getTime(),
+      natural: months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear()
+    }
+  }
+  else {
+    var ans = {unix: null, }
   }
   
   res.send(ans);
