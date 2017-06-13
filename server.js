@@ -16,6 +16,12 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+app.get('*', (req, res) => {
+  res.send('well hello');
+});
+
+
+/*
 app.get("/dreams", function (request, response) {
   response.send(dreams);
 });
@@ -32,6 +38,7 @@ var dreams = [
   "Climb a really tall mountain",
   "Wash the dishes"
 ];
+*/
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
