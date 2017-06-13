@@ -19,20 +19,25 @@ app.get("/", function (request, response) {
 app.get('*', (req, res) => {
   var time = req.originalUrl.slice(1);
   var date;
+  console.log(time, parseInt(time));
   
   if (parseInt(time)) {
+    console.log('in here');
     date = new Date(parseInt(time));
   }
   else {
     date = new Date(time);
   }
   
+  console.log(date);
+  var months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  
   var ans = {
-    'unix': date.now(),
-    'natural': 
+    'unix': date.getTime(),
+    'natural': months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear()
   }
   
-  res.send(req.originalUrl);
+  res.send(JSON.stringify(ans));
 });
 
 
@@ -57,5 +62,5 @@ var dreams = [
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
+  //console.log('Your app is listening on port ' + listener.address().port);
 });
